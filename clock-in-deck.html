@@ -78,7 +78,9 @@
   .etp .d{font-size:13.5px;line-height:1.48;color:var(--t2)}
   .etp .w{display:inline-block;margin-top:2.5mm;font:700 10px "Barlow Condensed",sans-serif;letter-spacing:.1em;
           text-transform:uppercase;color:var(--t3);border:1px solid var(--line);border-radius:99px;padding:1px 6px}
-  .etp .w.on{color:var(--lime);border-color:var(--limedim)}
+  .etp .w.on{color:var(--t3);border-color:var(--line)}
+  .etp.chain{background:rgba(197,255,65,.055);border-radius:3mm;padding-top:3mm;padding-bottom:3mm;margin-top:-3mm}
+  .etp.chain .w{color:#0B0D10;background:var(--lime);border-color:var(--lime);font-weight:800}
 
   /* telephone vide, avec sa consigne de capture */
   .tel{height:88mm;width:auto;aspect-ratio:9/17.5;border:2.4px solid #39404C;border-radius:5mm;background:#0E1116;position:relative;overflow:hidden;margin:0 auto}
@@ -257,7 +259,7 @@
       <div class="d">Signed, stored on the phone and in their encrypted backup. It needs no network, so a basement gym is the normal case.</div>
       <span class="w on">off-chain</span>
     </div>
-    <div class="etp">
+    <div class="etp chain">
       <div class="n">4 · Solana</div>
       <div class="t">One write a month</div>
       <div class="d">The Merkle root of the month is attested on the Solana Attestation Service, one attestation per person. A thousand users training fifteen times means a thousand writes, not fifteen thousand.</div>
@@ -298,7 +300,8 @@
     </div>
   </div>
   <div class="card lime" style="margin-top:6mm;padding:4.5mm 6mm">
-    <p style="font-size:15.5px;margin:0"><b>Every one of these costs us something, and we took it anyway.</b> Monthly anchoring delays a proof. Hashing only means a reader must ask the user for the payload. No program means no on-chain enforcement. We preferred a design a stranger can verify over one we would have to be trusted for.</p>
+    <p style="font-size:15.5px;margin:0 0 3mm"><b>Each of these costs us something, and we took it anyway.</b> Monthly anchoring means a proof lands at the end of the month, not the second you finish. Hashing only means a reader has to ask the user for the detail. No program means we cannot enforce anything on-chain. Each one removes a reason to have to trust us.</p>
+    <p style="font-size:15.5px;margin:0"><b>And one thing only Solana gives us: the rent comes back.</b> When a monthly attestation expires we close it and recover the deposit — measured on devnet, $0.2016 locked, $0.1994 returned. The account disappears, the transaction stays in the ledger, and the proof still verifies.</p>
   </div>
   <div class="brand">IronChain</div><div class="num">7 / 18</div>
 </section>
@@ -310,10 +313,11 @@
   <div class="pile">
     <div class="l"><div class="n">Flutter &amp; <em>Dart</em></div><div class="p">One codebase for iOS and Android, with native bridges written in house for the wallet and the sensors. 240 commits, 1,100 automated tests.</div></div>
     <div class="l"><div class="n">WebRTC</div><div class="p">Peer-to-peer video for the live 1-on-1, with a relay only when two phones cannot reach each other. The duel is the product, so it could not be a third-party room.</div></div>
-    <div class="l"><div class="n">Mobile Wallet Adapter <em>2.0</em></div><div class="p">The Solana Mobile standard for signing on Android. Phantom and Solflare both connect on a physical device. Community-maintained Flutter client, not an official SDK — we say so because it matters for maintenance.</div></div>
+    <div class="l"><div class="n">Mobile Wallet Adapter <em>2.0</em></div><div class="p">The Solana Mobile standard for signing on Android. Phantom and Solflare both connect on a physical device, and the app never sees a key — it hands over a hash and the user approves on their own screen.</div></div>
     <div class="l"><div class="n">Solana Attestation <em>Service</em></div><div class="p">We define SAS schemas rather than invent our own registry. Maintained by the Solana Foundation, Apache-2.0, and it exists nowhere else.</div></div>
     <div class="l"><div class="n">Metaplex <em>Core</em></div><div class="p">Permanent badges as soulbound assets. Measured on devnet against a tokenized attestation: less than half the rent, same two guarantees — the holder cannot transfer, the issuer can revoke.</div></div>
     <div class="l"><div class="n">Seed Vault <em>on Seeker</em></div><div class="p">Hardware-backed signing. A countersignature that costs a fingerprint exists only on Solana Mobile — that is why this app ships here before any app store.</div></div>
+    <div class="l" style="grid-column:1 / -1;border-top-color:var(--limedim)"><div class="n">Recoverable <em>rent</em></div><div class="p">Solana lets an issuer close an account and take the deposit back, while the transaction that created it stays in the ledger forever. That is what makes one attestation per person per month affordable, and what lets a proof outlive the account that carried it. It is the property the whole economic model rests on, and it does not exist on a chain where storage is paid once and kept forever.</div></div>
   </div>
   <div class="brand">IronChain</div><div class="num">8 / 18</div>
 </section>
